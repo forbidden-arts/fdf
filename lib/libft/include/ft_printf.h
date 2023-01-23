@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 08:43:28 by dpalmer           #+#    #+#             */
-/*   Updated: 2022/11/18 13:08:47 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/23 11:35:50 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,6 @@
 
 # include <stdarg.h>
 # include "libft.h"
-
-// Struct for Flags - REVISIT LATER
-// typedef struct s_flag
-// {
-// 	int	minus;
-// 	int	zero;
-// 	int	dot;
-// 	int	hash;
-// 	int	space;
-// 	int	plus;
-// }		t_flag;
 
 int		ft_printf(const char *format, ...);
 

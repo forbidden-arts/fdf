@@ -6,16 +6,34 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:42:56 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/23 09:51:15 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/23 13:36:48 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
+#include "fdf.h"
+
+void	my_mlx_pixel_put(t_fdf *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
 
 int	main(void)
 {
 	void	*mlx;
+	void	*mlx_win;
+	t_fdf	img;
 
 	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+	img.img = mlx_new_image(mlx, 1920, 1080);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+			&img.endian);
+	my_mlx_pixel_put(&img, 5, 5, 0x00FFFFFF);
+	my_mlx_pixel_put(&img, 50, 50, 0x00FFFFFF);
+	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	mlx_loop(mlx);
 	return (0);
 }
