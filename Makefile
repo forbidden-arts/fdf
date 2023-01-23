@@ -6,7 +6,7 @@
 #    By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 11:53:47 by dpalmer           #+#    #+#              #
-#    Updated: 2023/01/23 07:08:52 by dpalmer          ###   ########.fr        #
+#    Updated: 2023/01/23 07:38:23 by dpalmer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,14 +16,14 @@ NAME		=	fdf
 
 SRC_DIR		=	src/
 OBJ_DIR		=	obj/
-CC			=	cc
+CC			=	gcc
 CFLAGS		=	-O3 -Wall -Werror -Wextra
 
 INC		 		= inc/
-LIB_DIR			= lib/
-LIBFT_DIR		= $(LIB)libft/
-LIBFT			= $(LIB_DIR)libft.a
-MINILIBX_DIR	= $(LIB)miniliblx/minilibx_macos/
+LIB				= lib/
+LIBFT_DIR		:= $(LIB)libft/
+LIBFT			= $(LIBFT_DIR)libft.a
+MINILIBX_DIR	= $(LIB)minilibx_macos/
 MINILIBX		= $(MINILIBX_DIR)libmlx.a
 MINILIBXCC		= -I mlx -L $(MINILIBX_DIR) -lmlx
 HEADER 			= -I$(INC) -I$(LIBFT_DIR) -I$(MINILIBX_DIR)
@@ -46,6 +46,7 @@ SRC_FILES	=	main
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 INCS		= 	$(addprefix $(INCLUDE), $(addsuffix .h, $(INC_FILES)))
+DEPS 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .d, $(SRC_FILES)))
 
 ###
 
@@ -56,6 +57,7 @@ makelibs:
 			@$(MAKE) -C $(LIBFT_DIR)
 			@$(MAKE) -C $(MINILIBX_DIR)
 
+-include 	${DEPS}
 $(NAME):	$(OBJ)
 			@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)		
 			@echo "$(BLUE)$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)$(C_RESET)"
@@ -77,13 +79,13 @@ clean:
 			@make clean -C $(LIBFT_DIR)
 			@make clean -C $(MINILIBX_DIR)
 			@rm -rf $(OBJ_DIR)
-			@echo "$(BLUE)Object files DELETED$(C_RESET)"
+			@echo "$(BLUE)MINILIB OBJECTS DELETED$(C_RESET)"
 
 fclean:		clean
 			@rm -f $(NAME)
 			@rm -f $(MINILIBX)
 			@rm -f $(LIBFT)
-			@echo "$(CYAN)Executable files DELETED$(C_RESET)"
+			@echo "$(CYAN)EXECUTABLE DELETED$(C_RESET)"
 
 re:			fclean all
 
