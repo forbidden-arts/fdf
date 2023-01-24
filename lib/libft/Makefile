@@ -6,7 +6,7 @@
 #    By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 11:53:47 by dpalmer           #+#    #+#              #
-#    Updated: 2022/12/05 10:15:02 by dpalmer          ###   ########.fr        #
+#    Updated: 2023/01/24 13:16:52 by dpalmer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ CYAN = \033[0;96m
 
 # Sources
 
-SRC_FILES =	ft_atoi				\
+SRC_FILES =	ft_atoi_base		\
+			ft_atoi				\
 			ft_bzero			\
 			ft_isalnum			\
 			ft_isalpha			\
