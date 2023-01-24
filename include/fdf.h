@@ -6,15 +6,17 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:05 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/24 12:04:53 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/24 15:18:20 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include <mlx.h>
+# include <errno.h>
+# include <fcntl.h>
 # include <math.h>
+# include <mlx.h>
 # include "../lib/libft/include/libft.h"
 
 # define WIDTH 1920
@@ -84,6 +86,6 @@ void	ft_freetab(char **tab);
 t_map	*ft_map_init(void);
 
 /*		Parse Map					*/
-t_map	*ft_map_init(void);
+void	ft_validate_map(char *file, t_map *map);
 
 #endif

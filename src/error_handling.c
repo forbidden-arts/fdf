@@ -6,12 +6,11 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 08:52:18 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/24 10:44:06 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/24 14:50:12 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <errno.h>
 
 void	ft_throw_error(char *str)
 {
