@@ -6,7 +6,7 @@
 #    By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 11:53:47 by dpalmer           #+#    #+#              #
-#    Updated: 2023/01/23 11:56:17 by dpalmer          ###   ########.fr        #
+#    Updated: 2023/01/24 12:25:21 by dpalmer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,11 @@ CYAN = \033[0;96m
 
 #Sources
 
-SRC_FILES	=	main
+SRC_FILES	=	main				\
+				error_handling		\
+				mem_handling		\
+				init				\
+				parse_map			
 
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))

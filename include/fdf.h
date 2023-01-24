@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:05 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/23 15:49:17 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/24 12:04:53 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_point {
 }	t_point;
 
 typedef struct s_map {
+	int		***array;
 	int		height;
 	int		width;
 	int		z_min;
@@ -72,5 +73,17 @@ typedef struct s_fdf {
 	int		line_length;
 	int		endian;
 }	t_fdf;
+
+/*		Error Handling				*/
+void	ft_throw_error(char *str);
+
+/*		Mem Handling				*/
+void	ft_freetab(char **tab);
+
+/*		Init						*/
+t_map	*ft_map_init(void);
+
+/*		Parse Map					*/
+t_map	*ft_map_init(void);
 
 #endif
