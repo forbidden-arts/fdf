@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:05 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/26 15:13:35 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/26 18:53:36 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ t_point	*last_point(t_point *lst);
 void	free_points(t_point **stack);
 
 /*		Init						*/
-t_map	*ft_map_init(void);
+t_map	*map_init(void);
+t_point	*points_init(void);
 
 /*		Parse Map					*/
 void	fill_map(int fd, t_point *points, t_map *map);

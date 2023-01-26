@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:03:02 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/26 15:16:33 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/26 18:51:33 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,15 @@
 	Mouse Init?
 
 */
+t_point	*points_init(void)
+{
+	t_point	*points;
 
-t_map	*ft_map_init(void)
+	points = malloc(sizeof * points);
+	return (points);
+}
+
+t_map	*map_init(void)
 {
 	t_map	*map;
 
