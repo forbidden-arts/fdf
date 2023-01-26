@@ -6,11 +6,17 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 08:33:33 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/26 15:52:10 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/26 18:05:11 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+// static void	update_z(t_point *point, t_map *map)
+// {
+// 	if (point->z > map->z_max)
+// 		map->z_max = point->z;
+// }
 
 static void	parse_line(char *line, t_point *points, t_map *map)
 {
@@ -42,10 +48,13 @@ void	fill_map(int fd, t_point *points, t_map *map)
 	char	*line;
 
 	line = get_next_line(fd);
+	if (!line)
+		ft_throw_error("Empty map.");
 	while (line)
 	{
 		ft_printf("Parsing line:\n %s \n", line);
 		parse_line(line, points, map);
+		map->height++;
 		free(line);
 		line = get_next_line(fd);
 	}

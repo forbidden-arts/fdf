@@ -6,11 +6,30 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:42:56 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/26 15:49:16 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/26 18:04:53 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+// static void	print_map(t_point *points, t_map *map)
+// {
+// 	int	x;
+
+// 	ft_printf("This Runs!\n");
+// 	ft_printf("Map width: %d\n", map->width);
+// 	ft_printf("First Z: %d\n", points->z);
+// 	while (points)
+// 	{
+// 		x = 0;
+// 		while (x < map->width)
+// 		{
+// 			ft_printf("%d   ", points->z);
+// 			points = points->next;
+// 		}
+// 		x++;
+// 	}
+// }
 
 int	main(int argc, char **argv)
 {
@@ -26,6 +45,8 @@ int	main(int argc, char **argv)
 	points = NULL;
 	map = ft_map_init();
 	fill_map(fd, points, map);
+	ft_printf("node 0, 0: %d\n", points->z);
+	// print_map(points, map);
 	if (close(fd) == -1)
 		ft_throw_error("Error closing file.");
 	return (0);
