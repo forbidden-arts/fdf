@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:05 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/24 15:18:20 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/26 15:13:35 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ typedef enum e_proj {
 */
 
 typedef struct s_point {
-	int		x;
-	int		y;
-	int		z;
-	int		color;
+	int				x;
+	int				y;
+	int				z;
+	int				color;
+	struct s_point	*next;
 }	t_point;
 
 typedef struct s_map {
-	int		***array;
 	int		height;
 	int		width;
 	int		z_min;
@@ -82,10 +82,16 @@ void	ft_throw_error(char *str);
 /*		Mem Handling				*/
 void	ft_freetab(char **tab);
 
+/*		List Utils					*/
+t_point	*new_point(int x, char *sub, t_map *map);
+void	add_point(t_point **lst, t_point *new);
+t_point	*last_point(t_point *lst);
+void	free_points(t_point **stack);
+
 /*		Init						*/
 t_map	*ft_map_init(void);
 
 /*		Parse Map					*/
-void	ft_validate_map(char *file, t_map *map);
+void	fill_map(int fd, t_point *points, t_map *map);
 
 #endif
