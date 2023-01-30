@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:05 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/30 12:12:53 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/30 12:51:32 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,6 @@ typedef enum e_proj {
 	ISOMETRIC,
 	PARALLEL
 }	t_proj;
-
-/* TODO:
-	structs for:
-		mouse?
-*/
 
 typedef struct s_point {
 	int				x;

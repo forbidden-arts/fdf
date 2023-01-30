@@ -6,13 +6,13 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:42:56 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/30 12:14:34 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/30 13:34:37 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	print_map(t_point *points, t_map *map)
+void	print_map(t_point *points, t_map *map)
 {
 	int	x;
 
@@ -33,21 +33,32 @@ static void	print_map(t_point *points, t_map *map)
 		map->height, map->z_max, map->z_min);
 }
 
-int	main(int argc, char **argv)
+static int	f_cntrol(int argc, char **argv)
 {
-	int		fd;
-	t_map	*map;
-	t_point	*points;
+	int	fd;
 
 	if (argc != 2)
 		ft_throw_error("Usage: ./fdf <file>");
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 		ft_throw_error("Error opening file.");
+	return (fd);
+}
+
+int	main(int argc, char **argv)
+{
+	int		fd;
+	t_map	*map;
+	t_point	*points;
+	// void	*mlx;
+
+	fd = f_cntrol(argc, argv);
 	points = NULL;
 	map = ft_map_init();
 	points = fill_map(points, map, fd);
-	print_map(points, map);
+	// mlx = mlx_init();
+	// display control
+	// mlx_loop(mlx);
 	if (close(fd) == -1)
 		ft_throw_error("Error closing file.");
 	free(map);
