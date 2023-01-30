@@ -6,30 +6,32 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:42:56 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/26 18:04:53 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/30 12:14:34 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-// static void	print_map(t_point *points, t_map *map)
-// {
-// 	int	x;
+static void	print_map(t_point *points, t_map *map)
+{
+	int	x;
 
-// 	ft_printf("This Runs!\n");
-// 	ft_printf("Map width: %d\n", map->width);
-// 	ft_printf("First Z: %d\n", points->z);
-// 	while (points)
-// 	{
-// 		x = 0;
-// 		while (x < map->width)
-// 		{
-// 			ft_printf("%d   ", points->z);
-// 			points = points->next;
-// 		}
-// 		x++;
-// 	}
-// }
+	while (points)
+	{
+		x = 0;
+		while (x < map->width)
+		{
+			ft_printf("%d  ", points->z);
+			if (points->color)
+				ft_printf("color: %d ", points->color);
+			points = points->next;
+			x++;
+		}
+		ft_printf("\n");
+	}
+	ft_printf("Map Stats:\n W: %d, H: %d, Zmax: %d, Zmin %d\n", map->width,
+		map->height, map->z_max, map->z_min);
+}
 
 int	main(int argc, char **argv)
 {
@@ -44,11 +46,12 @@ int	main(int argc, char **argv)
 		ft_throw_error("Error opening file.");
 	points = NULL;
 	map = ft_map_init();
-	fill_map(fd, points, map);
-	ft_printf("node 0, 0: %d\n", points->z);
-	// print_map(points, map);
+	points = fill_map(points, map, fd);
+	print_map(points, map);
 	if (close(fd) == -1)
 		ft_throw_error("Error closing file.");
+	free(map);
+	free_points(points);
 	return (0);
 }
 
@@ -72,25 +75,4 @@ int	main(int argc, char **argv)
 
 // 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 // 	*(unsigned int *)dst = color;
-// }
-
-// void	print_map(t_map *map)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	i = 0;
-// 	while (i < map->height)
-// 	{
-// 		j = 0;
-// 		while (j < map->width)
-// 		{
-// 			ft_printf("%d ", map->array[i][j][0]);
-// 			j++;
-// 		}
-// 		ft_printf("\n");
-// 		i++;
-// 	}
-// 	ft_printf("H: %d W: %d Max: %d Min: %d\n", map->height, map->width,
-// 		map->z_max, map->z_min);
 // }
