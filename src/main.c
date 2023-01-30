@@ -6,36 +6,30 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:42:56 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/26 20:06:09 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/26 18:04:53 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	print_map(t_point *points, t_map *map)
-{
-	while (points)
-	{
-		if (points->x < map->width - 1)
-			ft_printf("%d ", points->z);
-		else
-			ft_printf("\n");
-		points = points->next;
-	}
-	ft_printf("\nh: %d, w: %d, max: %d, min:%d\n", map->height, map->width, map->z_max, map->z_min);
-	// ft_printf("Map width: %d\n", map->width);
-	// ft_printf("First Z: %d\n", points->z);
-	// while (points)
-	// {
-	// 	x = 0;
-	// 	while (x < map->width)
-	// 	{
-	// 		ft_printf("%d   ", points->z);
-	// 		points = points->next;
-	// 	}
-	// 	x++;
-	// }
-}
+// static void	print_map(t_point *points, t_map *map)
+// {
+// 	int	x;
+
+// 	ft_printf("This Runs!\n");
+// 	ft_printf("Map width: %d\n", map->width);
+// 	ft_printf("First Z: %d\n", points->z);
+// 	while (points)
+// 	{
+// 		x = 0;
+// 		while (x < map->width)
+// 		{
+// 			ft_printf("%d   ", points->z);
+// 			points = points->next;
+// 		}
+// 		x++;
+// 	}
+// }
 
 int	main(int argc, char **argv)
 {
@@ -48,11 +42,11 @@ int	main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 		ft_throw_error("Error opening file.");
-	map = map_init();
-	points = points_init();
+	points = NULL;
+	map = ft_map_init();
 	fill_map(fd, points, map);
-	ft_printf("map width: %d\n", map->width);
-	print_map(points, map);
+	ft_printf("node 0, 0: %d\n", points->z);
+	// print_map(points, map);
 	if (close(fd) == -1)
 		ft_throw_error("Error closing file.");
 	return (0);
