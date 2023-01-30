@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 08:33:33 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/30 12:14:07 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/30 16:11:47 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,20 @@
 
 static t_point	*parse_point(t_point *point, char *z_color)
 {
-	char	**tmp;
+	char	*tmp;
 
-	tmp = ft_split(z_color, ',');
-	point->z = ft_atoi(tmp[0]);
-	if (tmp[1])
-		point->color = ft_atoi_base(tmp[1], 16);
-	ft_freetab(tmp);
+	point->z = ft_atoi(z_color);
+	tmp = ft_strchr(z_color, ',');
+	if (tmp)
+		point->color = ft_atoi_base(tmp + 1, 16);
+
+	// char	**tmp;
+
+	// tmp = ft_split(z_color, ',');
+	// point->z = ft_atoi(tmp[0]);
+	// if (tmp[1])
+	// 	point->color = ft_atoi_base(tmp[1], 16);
+	// ft_freetab(tmp);
 	return (point);
 }
 

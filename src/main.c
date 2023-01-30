@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:42:56 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/30 13:34:37 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/30 16:27:41 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	main(int argc, char **argv)
 	// mlx = mlx_init();
 	// display control
 	// mlx_loop(mlx);
+	// print_map(points, map);
 	if (close(fd) == -1)
 		ft_throw_error("Error closing file.");
 	free(map);

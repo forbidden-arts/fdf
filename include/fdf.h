@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:05 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/30 12:51:32 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/30 14:09:23 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_point {
 	int				y;
 	int				z;
 	int				color;
+	struct s_point	*tail;
 	struct s_point	*next;
 }	t_point;
 
