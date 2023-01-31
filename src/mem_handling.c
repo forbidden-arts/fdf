@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:03:16 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/30 12:12:38 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/31 12:41:56 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,14 @@ void	free_points(t_point *stack)
 		free(stack);
 		stack = tmp;
 	}
-	// free(stack);
+}
+
+void	unwind_fdf(t_point *points, t_map *map, int i)
+{
+	if (points)
+		free_points(points);
+	if (map)
+		free(map);
+	if (i)
+		ft_throw_error("Error creating FdF environment.");
 }

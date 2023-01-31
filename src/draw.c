@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handling.c                                   :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 08:52:18 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/31 12:40:12 by dpalmer          ###   ########.fr       */
+/*   Created: 2023/01/31 11:00:20 by dpalmer           #+#    #+#             */
+/*   Updated: 2023/01/31 13:01:22 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_throw_error(char *str)
+void	put_pxl(t_fdf *img, int x, int y, int color)
 {
-	ft_putendl_fd(str, STDERR_FILENO);
-	exit (-1);
+	char	*dst;
+
+	dst = img->addr + (y * img->size_line + x * img->bpp / 8);
+	*(unsigned int *)dst = color;
 }

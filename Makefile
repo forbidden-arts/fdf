@@ -6,7 +6,7 @@
 #    By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 11:53:47 by dpalmer           #+#    #+#              #
-#    Updated: 2023/01/26 14:49:10 by dpalmer          ###   ########.fr        #
+#    Updated: 2023/01/31 11:02:33 by dpalmer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,9 @@ SRC_FILES	=	main				\
 				mem_handling		\
 				list_utils			\
 				init				\
-				parse_map
+				parse_map			\
+				mlx_control			\
+				draw
 
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))

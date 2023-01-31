@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:05 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/30 14:09:23 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/31 13:05:46 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ typedef struct s_map {
 
 typedef struct s_cam {
 	int		zoom;
-	float	x_angle;
-	float	y_angle;
-	float	z_angle;
+	double	x_angle;
+	double	y_angle;
+	double	z_angle;
+	float	z_scale;
 	int		x_offset;
 	int		y_offset;
 	t_proj	view;
@@ -67,9 +68,13 @@ typedef struct s_fdf {
 	void	*win;
 	void	*img;
 	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
+	int		bpp;
+	int		size_line;
 	int		endian;
+	t_cam	*cam;
+	t_map	*map;
+	t_point	*points;
+	t_mouse	*mouse;
 }	t_fdf;
 
 /*		Error Handling				*/
@@ -78,16 +83,23 @@ void	ft_throw_error(char *str);
 /*		Mem Handling				*/
 void	ft_freetab(char **tab);
 void	free_points(t_point *stack);
+void	unwind_fdf(t_point *points, t_map *map, int i);
 
 /*		List Utils					*/
 t_point	*new_point(void);
 void	add_point(t_point **lst, t_point *new);
-t_point	*last_point(t_point *lst);
 
 /*		Init						*/
-t_map	*ft_map_init(void);
+t_map	*map_init(void);
+t_fdf	*fdf_init(t_point *points, t_map *map);
 
 /*		Parse Map					*/
 t_point	*fill_map(t_point *points, t_map *map, int fd);
+
+/*		MLX Control					*/
+void	mlx_control(t_point *points, t_map *map);
+
+/*		Draw						*/
+void	put_pxl(t_fdf *img, int x, int y, int color);
 
 #endif

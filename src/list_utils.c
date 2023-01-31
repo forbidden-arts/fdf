@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 14:46:02 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/30 14:17:02 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/31 12:59:07 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,4 @@ void	add_point(t_point **lst, t_point *new)
 		(*lst)->tail->next = new;
 		(*lst)->tail = new;
 	}
-}
-
-t_point	*last_point(t_point *lst)
-{
-	if (!lst)
-		return (NULL);
-	if (lst->next == NULL)
-		return (lst);
-	return (last_point(lst->next));
 }
