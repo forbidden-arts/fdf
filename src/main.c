@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:42:56 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/31 12:31:54 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/31 13:37:16 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	main(int argc, char **argv)
 	int		fd;
 	t_map	*map;
 	t_point	*points;
-	t_fdf	*fdf;
 
 	fd = f_cntrol(argc, argv);
 	points = NULL;

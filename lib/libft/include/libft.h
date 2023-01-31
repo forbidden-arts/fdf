@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:02:34 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/24 13:27:48 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/31 13:43:34 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,7 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
 
 char			*ft_strrev(const char *s);
+int				ft_min(int count, ...);
+int				ft_max(int count, ...);
 
 #endif

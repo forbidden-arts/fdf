@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:03:02 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/31 13:07:21 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/01/31 13:48:21 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,28 @@ t_fdf	*fdf_init(t_point *points, t_map *map)
 	fdf->map = map;
 	fdf->points = points;
 	fdf->mouse = malloc(sizeof(t_mouse));
+	return (fdf);
 }
 
 t_cam	*camera_init(t_fdf *fdf)
 {
-	
+	t_cam	*camera;
+
+	camera = malloc(sizeof(camera));
+	if (!camera)
+	{
+		unwind_fdf(fdf->points, fdf->map, 0);
+		free(fdf);
+		ft_throw_error("Error initializing camera.");
+	}
+	camera->zoom = ft_min(2, (WIDTH - MENU) / fdf->map->width / 2, HEIGHT
+			/ fdf->map->height / 2);
+	camera->x_angle = 0;
+	camera->y_angle = 0;
+	camera->z_angle = 0;
+	camera->z_scale = 1.0;
+	camera->x_offset = 0;
+	camera->y_offset = 0;
+	camera->view = ISOMETRIC;
+	return (camera);
 }

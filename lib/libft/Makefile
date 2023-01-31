@@ -6,7 +6,7 @@
 #    By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 11:53:47 by dpalmer           #+#    #+#              #
-#    Updated: 2023/01/24 13:16:52 by dpalmer          ###   ########.fr        #
+#    Updated: 2023/01/31 13:34:21 by dpalmer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,9 @@ SRC_FILES =	ft_atoi_base		\
 			ft_strrev			\
 			ft_conv_utils		\
 			ft_pf_printers		\
-			ft_printf
+			ft_printf			\
+			ft_min				\
+			ft_max
 
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
