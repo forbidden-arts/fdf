@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:03:02 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/02 12:07:57 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/02 12:37:56 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_coord	*coord_init(t_point *points, t_map *map)
 	t_coord	*coord;
 	int		i;
 
-	coord = calloc(sizeof(t_coord) * (map->width * map->height), 1);
+	coord = malloc(sizeof(t_coord) * (map->width * map->height));
 	if (!coord)
 		ft_throw_error("Error creating co-ord array.");
 	i = 0;
@@ -72,8 +72,8 @@ t_cam	*camera_init(t_fdf *fdf)
 	camera = malloc(sizeof * (camera));
 	if (!camera)
 		ft_throw_error("Error initializing camera.");
-	camera->zoom = ft_min(2, (WIDTH - MENU) / fdf->map->width / 2, HEIGHT
-			/ fdf->map->height / 2);
+	camera->zoom = ft_min(2, (WIDTH - MENU) / fdf->map->width, HEIGHT
+			/ fdf->map->height);
 	camera->x_angle = 0;
 	camera->y_angle = 0;
 	camera->z_angle = 0;
