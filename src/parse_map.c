@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 08:33:33 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/02 12:09:59 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/02 13:01:57 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ t_point	*fill_map(t_map *map, int fd)
 	char	*line;
 	t_point	*points;
 
+	ft_printf("Checking map...");
 	points = NULL;
 	line = get_next_line(fd);
 	if (!line)

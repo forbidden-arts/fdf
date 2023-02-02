@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:05 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/02 11:52:39 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/02 15:09:05 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,16 @@ t_cam	*camera_init(t_fdf *fdf);
 /*		Parse Map					*/
 t_point	*fill_map(t_map *map, int fd);
 
-/*		MLX Control					*/
-void	mlx_control(t_point *points, t_map *map);
+/*		Math Utils					*/
+float	p_dist(int beg, int end, int cur);
 
 /*		Draw						*/
 void	put_pxl(t_fdf *img, int x, int y, int color);
 void	draw(t_coord *coord, t_fdf *fdf);
+
+/*		Color						*/
+float	p_dist(int beg, int end, int cur);
+int		get_grad(int beg, int end, float p);
+int		get_color(t_coord cur, t_coord beg, t_coord end);
 
 #endif

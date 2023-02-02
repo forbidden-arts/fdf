@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:03:02 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/02 12:37:56 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/02 13:01:14 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_coord	*coord_init(t_point *points, t_map *map)
 		points = points->next;
 	}
 	free_points(points);
+	ft_printf("Co-ordinates loaded successfully.");
 	return (coord);
 }
 
