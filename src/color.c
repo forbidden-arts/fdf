@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:43:44 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/02 15:08:25 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/02 19:14:39 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	get_color(t_coord cur, t_coord beg, t_coord end)
 	int		blue;
 	float	p;
 
-	if (fabs(beg.x - end.x) > fabs(beg.y - end.y))
+	if (ft_abs(beg.x - end.x) > ft_abs(beg.y - end.y))
 		p = p_dist(beg.x, end.x, cur.x);
 	else
 		p = p_dist(beg.y, end.y, cur.y);

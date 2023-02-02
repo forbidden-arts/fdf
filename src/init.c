@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:03:02 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/02 13:01:14 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/02 17:41:02 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ t_cam	*camera_init(t_fdf *fdf)
 		ft_throw_error("Error initializing camera.");
 	camera->zoom = ft_min(2, (WIDTH - MENU) / fdf->map->width, HEIGHT
 			/ fdf->map->height);
-	camera->x_angle = 0;
-	camera->y_angle = 0;
-	camera->z_angle = 0;
+	camera->alpha = 0;
+	camera->beta = 0;
+	camera->gamma = 0;
 	camera->z_scale = 1.0;
 	camera->x_offset = 0;
 	camera->y_offset = 0;

@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:05 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/02 15:09:05 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/02 19:10:00 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ typedef struct s_map {
 
 typedef struct s_cam {
 	int		zoom;
-	double	x_angle;
-	double	y_angle;
-	double	z_angle;
+	float	alpha;
+	float	beta;
+	float	gamma;
 	float	z_scale;
 	int		x_offset;
 	int		y_offset;
@@ -105,10 +105,15 @@ t_cam	*camera_init(t_fdf *fdf);
 t_point	*fill_map(t_map *map, int fd);
 
 /*		Math Utils					*/
-float	p_dist(int beg, int end, int cur);
+void	rot_x(int *y, int *z, float alpha);
+void	rot_y(int *x, int *z, float beta);
+void	rot_z(int *x, int *y, float gamma);
+void	iso(int *x, int *y, int z);
 
 /*		Draw						*/
+t_coord	project(t_coord point, t_fdf *fdf);
 void	put_pxl(t_fdf *img, int x, int y, int color);
+void	draw_line(t_coord beg, t_coord end, t_fdf *fdf);
 void	draw(t_coord *coord, t_fdf *fdf);
 
 /*		Color						*/
