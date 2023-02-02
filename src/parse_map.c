@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 08:33:33 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/31 12:37:12 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/02 12:09:59 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static t_point	*parse_point(t_point *point, char *z_color)
 	tmp = ft_strchr(z_color, ',');
 	if (tmp)
 		point->color = ft_atoi_base(tmp + 1, 16);
+	else
+		point->color = -1;
 	return (point);
 }
 
@@ -63,10 +65,12 @@ static void	update_z(t_point *point, t_map *map)
 	}
 }
 
-t_point	*fill_map(t_point *points, t_map *map, int fd)
+t_point	*fill_map(t_map *map, int fd)
 {
 	char	*line;
+	t_point	*points;
 
+	points = NULL;
 	line = get_next_line(fd);
 	if (!line)
 		ft_throw_error("Empty map.");
@@ -79,5 +83,7 @@ t_point	*fill_map(t_point *points, t_map *map, int fd)
 	}
 	update_z(points, map);
 	ft_printf("Map filled.\n");
+	ft_printf("H: %d, W: %d, Zmax: %d, Zmin: %d\n", map->height, map->width,
+		map->z_max, map->z_min);
 	return (points);
 }

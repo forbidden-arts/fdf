@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:05 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/31 13:05:46 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/02 11:52:39 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ typedef enum e_proj {
 	ISOMETRIC,
 	PARALLEL
 }	t_proj;
+
+typedef struct s_coord {
+	int	x;
+	int	y;
+	int	z;
+	int	color;
+}	t_coord;
 
 typedef struct s_point {
 	int				x;
@@ -73,7 +80,6 @@ typedef struct s_fdf {
 	int		endian;
 	t_cam	*cam;
 	t_map	*map;
-	t_point	*points;
 	t_mouse	*mouse;
 }	t_fdf;
 
@@ -91,15 +97,18 @@ void	add_point(t_point **lst, t_point *new);
 
 /*		Init						*/
 t_map	*map_init(void);
-t_fdf	*fdf_init(t_point *points, t_map *map);
+t_coord	*coord_init(t_point *points, t_map *map);
+t_fdf	*fdf_init(t_map *map);
+t_cam	*camera_init(t_fdf *fdf);
 
 /*		Parse Map					*/
-t_point	*fill_map(t_point *points, t_map *map, int fd);
+t_point	*fill_map(t_map *map, int fd);
 
 /*		MLX Control					*/
 void	mlx_control(t_point *points, t_map *map);
 
 /*		Draw						*/
 void	put_pxl(t_fdf *img, int x, int y, int color);
+void	draw(t_coord *coord, t_fdf *fdf);
 
 #endif

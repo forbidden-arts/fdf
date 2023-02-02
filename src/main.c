@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:42:56 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/31 13:37:16 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/02 11:44:27 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,20 @@ int	main(int argc, char **argv)
 	int		fd;
 	t_map	*map;
 	t_point	*points;
+	t_fdf	*fdf;
+	t_coord	*coord;
 
 	fd = f_cntrol(argc, argv);
-	points = NULL;
 	map = map_init();
-	points = fill_map(points, map, fd);
-	// mlx = mlx_init();
-	// display control
-	// mlx_loop(mlx);
-	// print_map(points, map);
+	points = fill_map(map, fd);
+	coord = coord_init(points, map);
+	fdf = fdf_init(map);
+	fdf->cam = camera_init(fdf);
+	draw(coord, fdf);
+	mlx_loop(fdf);
 	if (close(fd) == -1)
 		ft_throw_error("Error closing file.");
 	free(map);
-	free_points(points);
 	return (0);
 }
 
