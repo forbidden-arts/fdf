@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:03:02 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/02 17:41:02 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/03 11:46:21 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ t_cam	*camera_init(t_fdf *fdf)
 	camera = malloc(sizeof * (camera));
 	if (!camera)
 		ft_throw_error("Error initializing camera.");
-	camera->zoom = ft_min(2, (WIDTH - MENU) / fdf->map->width, HEIGHT
-			/ fdf->map->height);
+	camera->zoom = ft_min(2, (WIDTH - MENU) / fdf->map->width / 2, HEIGHT
+			/ fdf->map->height / 2);
 	camera->alpha = 0;
 	camera->beta = 0;
 	camera->gamma = 0;

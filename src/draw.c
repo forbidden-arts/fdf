@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:00:20 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/02 19:16:42 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/03 11:59:28 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,21 @@
 
 t_coord	project(t_coord point, t_fdf *fdf)
 {
-	point.x += (WIDTH - (fdf->map->width - 1) * fdf->cam->zoom) / 2 + MENU
-		+ fdf->cam->x_offset;
-	point.y += (HEIGHT - (fdf->map->height - 1) * fdf->cam->zoom) / 2
-		+ fdf->cam->y_offset;
+	int	zoom;
+
+	zoom = fdf->cam->zoom;
+	point.x *= zoom;
+	point.y *= zoom;
+	point.z *= zoom / fdf->cam->z_scale;
+	point.x -= (fdf->map->width - 1) * zoom / 2;
+	point.y -= (fdf->map->height - 1) * zoom / 2;
 	rot_x(&point.y, &point.z, fdf->cam->alpha);
 	rot_y(&point.x, &point.z, fdf->cam->beta);
 	rot_z(&point.x, &point.y, fdf->cam->gamma);
 	if (fdf->cam->view == ISOMETRIC)
 		iso(&point.x, &point.y, point.z);
+	point.x += (WIDTH - MENU) / 2 + MENU + fdf->cam->x_offset;
+	point.y += (HEIGHT + fdf->map->height * zoom) / 2 + fdf->cam->y_offset;
 	return (point);
 }
 
@@ -39,30 +45,44 @@ void	put_pxl(t_fdf *fdf, int x, int y, int color)
 	}
 }
 
+static void	line_prep(t_coord *delta, t_coord *sign, t_coord beg, t_coord end)
+{
+	delta->x = ft_abs(end.x - beg.x);
+	delta->y = -ft_abs(end.y - beg.y);
+	if (beg.x < end.x)
+		sign->x = 1;
+	else
+		sign->x = -1;
+	if (beg.y < end.y)
+		sign->y = 1;
+	else
+		sign->y = -1;
+}
+
 /* Using Bresenham's Algo, since it seems pretty straight forward. */
 void	draw_line(t_coord beg, t_coord end, t_fdf *fdf)
 {
-	int		error[2];
-	int		sign[2];
+	t_coord	delta;
+	t_coord	sign;
 	t_coord	tmp;
+	int		error[2];
 
-	sign[0] = 1 - 2 * (beg.x < end.x);
-	sign[1] = 1 - 2 * (beg.y < end.y);
-	error[0] = ft_abs(beg.x - end.x) - ft_abs(beg.y - end.y);
+	line_prep(&delta, &sign, beg, end);
+	error[0] = delta.x + delta.y;
 	tmp = beg;
 	while (tmp.x != end.x || tmp.y != end.y)
 	{
 		put_pxl(fdf, tmp.x, tmp.y, get_color(tmp, beg, end));
 		error[1] = 2 * error[0];
-		if (error[1] >= -ft_abs(beg.y - end.y))
+		if (error[1] >= delta.y)
 		{
-			error[0] += -ft_abs(beg.y - end.y);
-			tmp.x += sign[0];
+			error[0] += delta.y;
+			tmp.x += sign.x;
 		}
-		if (error[1] < ft_abs(beg.x - end.x))
+		if (error[1] < delta.x)
 		{
-			error[0] += ft_abs(beg.x - end.x);
-			tmp.y += sign[1];
+			error[0] += delta.x;
+			tmp.y += sign.y;
 		}
 	}
 }
@@ -72,6 +92,7 @@ void	draw(t_coord *coord, t_fdf *fdf)
 	int	x;
 	int	y;
 
+	ft_printf("camera zoom: %d\n", fdf->cam->zoom);
 	y = 0;
 	while (y < fdf->map->height)
 	{
