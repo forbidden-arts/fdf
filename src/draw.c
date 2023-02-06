@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:00:20 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/06 10:18:45 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/06 10:41:44 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,4 +114,5 @@ void	draw(t_coord *coord, t_fdf *fdf)
 		y++;
 	}
 	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img, 0, 0);
+	print_menu(fdf);
 }

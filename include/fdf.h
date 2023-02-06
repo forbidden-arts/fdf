@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:05 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/06 10:18:19 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/06 10:48:47 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@
 # define BACK 0x111111
 
 typedef enum e_proj {
-	ISOMETRIC
+	ISOMETRIC,
+	PARALLEL
 }	t_proj;
 
 typedef struct s_coord {
@@ -123,5 +124,8 @@ float	p_dist(int beg, int end, int cur);
 int		get_grad(int beg, int end, float p);
 int		get_color(t_coord cur, t_coord beg, t_coord end);
 void	draw_back(t_fdf *fdf);
+
+/*		Menu						*/
+void	print_menu(t_fdf *fdf);
 
 #endif
