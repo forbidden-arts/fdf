@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:43:44 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/06 10:18:05 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/06 11:18:33 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,4 @@ int	get_color(t_coord cur, t_coord beg, t_coord end)
 	green = get_grad((beg.color >> 8) & 0xFF, (end.color >> 8) & 0xFF, p);
 	blue = get_grad(beg.color & 0xFF, end.color & 0xFF, p);
 	return ((red << 16) | (green << 8) | blue);
-}
-
-void	draw_back(t_fdf *fdf)
-{
-	int	*img;
-	int	i;
-
-	i = 0;
-	ft_bzero(fdf->addr, HEIGHT * WIDTH * fdf->bpp / 8);
-	img = (int *)fdf->addr;
-	while (i < HEIGHT * WIDTH)
-	{
-		if (i % WIDTH < MENU)
-			img[i] = MENUBACK;
-		else
-			img[i] = BACK;
-		i++;
-	}
 }

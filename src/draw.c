@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:00:20 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/06 10:41:44 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/06 12:24:47 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,17 +87,19 @@ void	draw_line(t_coord beg, t_coord end, t_fdf *fdf)
 	}
 }
 
+/* For the moment, we init ints as -1 to save on line count. Fix later. */
+
 void	draw(t_coord *coord, t_fdf *fdf)
 {
 	int	x;
 	int	y;
 
 	draw_back(fdf);
-	y = 0;
-	while (y < fdf->map->height)
+	y = -1;
+	while (++y < fdf->map->height)
 	{
-		x = 0;
-		while (x < fdf->map->width)
+		x = -1;
+		while (++x < fdf->map->width)
 		{
 			if (x != fdf->map->width - 1)
 			{
@@ -109,9 +111,7 @@ void	draw(t_coord *coord, t_fdf *fdf)
 				draw_line(project(coord[x + y * fdf->map->width], fdf),
 					project(coord[x + (y + 1) * fdf->map->width], fdf), fdf);
 			}
-			x++;
 		}
-		y++;
 	}
 	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img, 0, 0);
 	print_menu(fdf);

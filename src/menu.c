@@ -6,11 +6,29 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:37:48 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/06 10:48:30 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/06 12:24:41 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	draw_back(t_fdf *fdf)
+{
+	int	*img;
+	int	i;
+
+	i = 0;
+	ft_bzero(fdf->addr, HEIGHT * WIDTH * fdf->bpp / 8);
+	img = (int *)fdf->addr;
+	while (i < HEIGHT * WIDTH)
+	{
+		if (i % WIDTH < MENU)
+			img[i] = MENUBACK;
+		else
+			img[i] = BACK;
+		i++;
+	}
+}
 
 void	print_menu(t_fdf *fdf)
 {

@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:03:02 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/03 11:46:21 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/06 15:01:10 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ t_coord	*coord_init(t_point *points, t_map *map)
 		points = points->next;
 	}
 	free_points(points);
-	ft_printf("Co-ordinates loaded successfully.");
 	return (coord);
 }
 
@@ -62,7 +61,8 @@ t_fdf	*fdf_init(t_map *map)
 	fdf->addr = mlx_get_data_addr(fdf->img, &(fdf->bpp), &(fdf->size_line),
 			&(fdf->endian));
 	fdf->map = map;
-	fdf->mouse = malloc(sizeof(t_mouse));
+	free(map);
+	// fdf->mouse = malloc(sizeof(t_mouse));
 	return (fdf);
 }
 

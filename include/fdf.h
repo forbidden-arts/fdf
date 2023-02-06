@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:05 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/06 10:48:47 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/06 15:08:53 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 # include <mlx.h>
 # include "../lib/libft/include/libft.h"
 
-# define WIDTH 1920
-# define HEIGHT 1080
-# define MENU 300
+# define WIDTH		1920
+# define HEIGHT		1080
+# define MENU		300
 
-# define MENUBACK 0xE5E5E5
-# define BACK 0x111111
+# define MENUBACK	0xE5E5E5
+# define BACK		0x111111
 
 typedef enum e_proj {
 	ISOMETRIC,
@@ -81,6 +81,7 @@ typedef struct s_fdf {
 	int		bpp;
 	int		size_line;
 	int		endian;
+	t_coord	*coord;
 	t_cam	*cam;
 	t_map	*map;
 	t_mouse	*mouse;
@@ -123,9 +124,21 @@ void	draw(t_coord *coord, t_fdf *fdf);
 float	p_dist(int beg, int end, int cur);
 int		get_grad(int beg, int end, float p);
 int		get_color(t_coord cur, t_coord beg, t_coord end);
-void	draw_back(t_fdf *fdf);
 
 /*		Menu						*/
+void	draw_back(t_fdf *fdf);
 void	print_menu(t_fdf *fdf);
+
+/*		Input Handling*/
+int		w_close(void *param);
+void	user_input(t_fdf *fdf);
+int		key_down(int key, void *vars);
+
+/*		Adjust						*/
+void	zoom(int key, t_fdf *fdf);
+void	move(int key, t_fdf *fdf);
+void	rot(int key, t_fdf *fdf);
+void	flat(int key, t_fdf *fdf);
+void	proj(int key, t_fdf *fdf);
 
 #endif
