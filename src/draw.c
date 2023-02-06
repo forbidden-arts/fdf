@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:00:20 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/03 11:59:28 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/06 10:18:45 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ t_coord	project(t_coord point, t_fdf *fdf)
 	point.x *= zoom;
 	point.y *= zoom;
 	point.z *= zoom / fdf->cam->z_scale;
-	point.x -= (fdf->map->width - 1) * zoom / 2;
-	point.y -= (fdf->map->height - 1) * zoom / 2;
+	point.x -= fdf->map->width * zoom / 2;
+	point.y -= fdf->map->height * zoom / 2;
 	rot_x(&point.y, &point.z, fdf->cam->alpha);
 	rot_y(&point.x, &point.z, fdf->cam->beta);
 	rot_z(&point.x, &point.y, fdf->cam->gamma);
 	if (fdf->cam->view == ISOMETRIC)
 		iso(&point.x, &point.y, point.z);
 	point.x += (WIDTH - MENU) / 2 + MENU + fdf->cam->x_offset;
-	point.y += (HEIGHT + fdf->map->height * zoom) / 2 + fdf->cam->y_offset;
+	point.y += (HEIGHT - fdf->map->height * zoom) + fdf->cam->y_offset;
 	return (point);
 }
 
@@ -92,7 +92,7 @@ void	draw(t_coord *coord, t_fdf *fdf)
 	int	x;
 	int	y;
 
-	ft_printf("camera zoom: %d\n", fdf->cam->zoom);
+	draw_back(fdf);
 	y = 0;
 	while (y < fdf->map->height)
 	{

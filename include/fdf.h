@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:05 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/02 19:10:00 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/06 10:18:19 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@
 # define HEIGHT 1080
 # define MENU 300
 
+# define MENUBACK 0xE5E5E5
+# define BACK 0x111111
+
 typedef enum e_proj {
-	ISOMETRIC,
-	PARALLEL
+	ISOMETRIC
 }	t_proj;
 
 typedef struct s_coord {
@@ -120,5 +122,6 @@ void	draw(t_coord *coord, t_fdf *fdf);
 float	p_dist(int beg, int end, int cur);
 int		get_grad(int beg, int end, float p);
 int		get_color(t_coord cur, t_coord beg, t_coord end);
+void	draw_back(t_fdf *fdf);
 
 #endif
