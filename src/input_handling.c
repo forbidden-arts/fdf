@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:17:52 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/07 15:16:19 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/07 15:45:33 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 int	w_close(t_fdf *fdf)
 {
-	exit(0);
 	mlx_destroy_window(fdf->mlx, fdf->win);
-	return(0);
+	exit(0);
+	return (0);
 }
 
 void	user_input(t_fdf *fdf)

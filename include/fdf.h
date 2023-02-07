@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:05 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/07 15:31:03 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/07 15:46:01 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ typedef struct s_cam {
 	int		y_offset;
 	int		view;
 }	t_cam;
-
 
 typedef struct s_fdf {
 	void	*mlx;
@@ -125,12 +124,5 @@ void	print_menu(t_fdf *fdf);
 int		w_close(t_fdf *fdf);
 void	user_input(t_fdf *fdf);
 int		key_down(int key, t_fdf *fdf);
-
-/*		Adjust						*/
-// void	zoom(int key, t_fdf *fdf);
-// void	move(int key, t_fdf *fdf);
-// void	rot(int key, t_fdf *fdf);
-// void	flat(int key, t_fdf *fdf);
-// void	proj(int key, t_fdf *fdf);
 
 #endif
