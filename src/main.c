@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:42:56 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/06 12:40:50 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/07 15:21:38 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ int	main(int argc, char **argv)
 	map = map_init();
 	points = fill_map(map, fd);
 	fdf = fdf_init(map);
-	fdf->cam = camera_init(fdf);
-	fdf->coord = coord_init(points, fdf->map);
+	fdf->coord = coord_init(points, map);
 	draw(fdf->coord, fdf);
 	user_input(fdf);
 	mlx_loop(fdf);

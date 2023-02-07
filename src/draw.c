@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:00:20 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/06 12:24:47 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/07 15:31:45 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_coord	project(t_coord point, t_fdf *fdf)
 	rot_x(&point.y, &point.z, fdf->cam->alpha);
 	rot_y(&point.x, &point.z, fdf->cam->beta);
 	rot_z(&point.x, &point.y, fdf->cam->gamma);
-	if (fdf->cam->view == ISOMETRIC)
+	if (fdf->cam->view == 0)
 		iso(&point.x, &point.y, point.z);
 	point.x += (WIDTH - MENU) / 2 + MENU + fdf->cam->x_offset;
 	point.y += (HEIGHT - fdf->map->height * zoom) + fdf->cam->y_offset;
@@ -94,7 +94,6 @@ void	draw(t_coord *coord, t_fdf *fdf)
 	int	x;
 	int	y;
 
-	draw_back(fdf);
 	y = -1;
 	while (++y < fdf->map->height)
 	{
@@ -114,5 +113,5 @@ void	draw(t_coord *coord, t_fdf *fdf)
 		}
 	}
 	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img, 0, 0);
-	print_menu(fdf);
+	free(fdf->cam);
 }

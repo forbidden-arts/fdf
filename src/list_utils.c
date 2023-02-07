@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 14:46:02 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/01/31 12:59:07 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/07 15:21:55 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_point	*new_point(void)
 {
 	t_point	*new;
 
-	new = malloc(sizeof * (new));
+	new = malloc(sizeof(t_point));
 	if (!new)
 		return (NULL);
 	new->x = 0;

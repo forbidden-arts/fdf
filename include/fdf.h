@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:05 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/02/06 15:08:53 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/02/07 15:31:03 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define WIDTH		1920
 # define HEIGHT		1080
-# define MENU		300
+# define MENU		0
 
 # define MENUBACK	0xE5E5E5
 # define BACK		0x111111
@@ -62,16 +62,9 @@ typedef struct s_cam {
 	float	z_scale;
 	int		x_offset;
 	int		y_offset;
-	t_proj	view;
+	int		view;
 }	t_cam;
 
-typedef struct s_mouse {
-	int		button;
-	int		x;
-	int		y;
-	int		x_prev;
-	int		y_prev;
-}	t_mouse;
 
 typedef struct s_fdf {
 	void	*mlx;
@@ -84,7 +77,6 @@ typedef struct s_fdf {
 	t_coord	*coord;
 	t_cam	*cam;
 	t_map	*map;
-	t_mouse	*mouse;
 }	t_fdf;
 
 /*		Error Handling				*/
@@ -103,7 +95,7 @@ void	add_point(t_point **lst, t_point *new);
 t_map	*map_init(void);
 t_coord	*coord_init(t_point *points, t_map *map);
 t_fdf	*fdf_init(t_map *map);
-t_cam	*camera_init(t_fdf *fdf);
+t_cam	*camera_init(t_map *map);
 
 /*		Parse Map					*/
 t_point	*fill_map(t_map *map, int fd);
@@ -130,15 +122,15 @@ void	draw_back(t_fdf *fdf);
 void	print_menu(t_fdf *fdf);
 
 /*		Input Handling*/
-int		w_close(void *param);
+int		w_close(t_fdf *fdf);
 void	user_input(t_fdf *fdf);
-int		key_down(int key, void *vars);
+int		key_down(int key, t_fdf *fdf);
 
 /*		Adjust						*/
-void	zoom(int key, t_fdf *fdf);
-void	move(int key, t_fdf *fdf);
-void	rot(int key, t_fdf *fdf);
-void	flat(int key, t_fdf *fdf);
-void	proj(int key, t_fdf *fdf);
+// void	zoom(int key, t_fdf *fdf);
+// void	move(int key, t_fdf *fdf);
+// void	rot(int key, t_fdf *fdf);
+// void	flat(int key, t_fdf *fdf);
+// void	proj(int key, t_fdf *fdf);
 
 #endif

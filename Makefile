@@ -6,7 +6,7 @@
 #    By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 11:53:47 by dpalmer           #+#    #+#              #
-#    Updated: 2023/02/06 12:19:24 by dpalmer          ###   ########.fr        #
+#    Updated: 2023/02/07 15:33:14 by dpalmer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,8 +44,7 @@ SRC_FILES	=	main				\
 				draw				\
 				color				\
 				menu				\
-				input_handling		\
-				adjust
+				input_handling
 
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
