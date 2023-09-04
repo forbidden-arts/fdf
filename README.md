@@ -1,9 +1,9 @@
 # fdf
-![dpalmer's 42 stats](https://badge42.vercel.app/api/v2/cli5pb141011308mh1fmi5qrq/stats?cursusId=21&coalitionId=271)
+<!-- ![dpalmer's 42 stats](https://badge42.vercel.app/api/v2/cli5pb141011308mh1fmi5qrq/stats?cursusId=21&coalitionId=271) -->
 
 ![Achievement Unlocked!](./assets/fdfm.png)
 
-![dpalmer's 42 FdF Score](https://badge42.vercel.app/api/v2/cli5pb141011308mh1fmi5qrq/project/2909195)
+<!-- ![dpalmer's 42 FdF Score](https://badge42.vercel.app/api/v2/cli5pb141011308mh1fmi5qrq/project/2909195) -->
 
 ## 🤓 Overview
 Ever wanted to turn a text file filled with numbers into a 1980's style 3D rendering? I got you, fam.
